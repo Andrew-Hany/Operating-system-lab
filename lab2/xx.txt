@@ -1,0 +1,10 @@
+total 2328
+-rwxr-xr-x  1 auc  staff   52240 Feb 23 15:41 a.out
+-rw-r--r--@ 1 auc  staff  924670 Feb 23 15:37 lab2.pdf
+-rw-r--r--  1 auc  staff     244 Feb 23 09:00 makefile
+-rw-r--r--  1 auc  staff      45 Feb 23 13:26 readme.txt
+-rw-r--r--  1 auc  staff   10799 Feb 23 08:52 shell.c
+-rw-r--r--  1 auc  staff   11328 Feb 23 15:41 shellO.o
+-rw-r--r--  1 auc  staff  130636 Feb 23 15:41 shellP.c
+-rw-r--r--  1 auc  staff   47049 Feb 23 15:41 shellS.s
+-rw-r--r--  1 auc  staff       0 Feb 23 18:28 xx.txt
