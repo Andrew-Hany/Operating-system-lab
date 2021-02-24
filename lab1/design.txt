@@ -1,0 +1,22 @@
+in the backup:
+1) loop over the folder and copy them to the backup folder
+2)then  tar them
+3)then encrypt them using gpg
+4)then loop over the files and put them inside a folder called files under the folder called date
+5)then tar the files folder and encrypt it 
+6)cd ..
+7) tar the folder called same as the date
+8) then encrypt it 
+9) delete the origin folders and the tar ones
+
+
+
+in the restore:
+1) decrypt the folder called date and then decompress it and call it the same as the date also 
+2) loop over the folders and decrypt it and then decompress it 
+3) and of course delete the tar folder
+
+
+note: i decided to make the user pass the folder excluding /root/
+
+so if the user want to pass "/root/01" he just pass "01"
