@@ -1,1 +1,0 @@
-cmd_/root/lab1/Operating-system-lab/lab3/lab3.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T /usr/src/linux-headers-4.19.0-13-common/scripts/module-common.lds  --build-id  -o /root/lab1/Operating-system-lab/lab3/lab3.ko /root/lab1/Operating-system-lab/lab3/lab3.o /root/lab1/Operating-system-lab/lab3/lab3.mod.o ;  true
