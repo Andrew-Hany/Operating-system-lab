@@ -105,8 +105,10 @@ void get_kernel_version(char*buf){
 			read_from_file_until(mf,line,len,'\n');
 					if(strstr(line,"R sys_call_table"))
 						printk(KERN_ALERT"%s\n",line);
+
 		}
-	printk(KERN_ALERT"Linux version from '/proc/version': %s\n",table_name);
+		char*address=strsep(&line," ");
+	printk(KERN_ALERT"Linux version from '/proc/version': %s\n",address);
 	kvfree(buf);
 	//kvfree(mf);
 	return 0;

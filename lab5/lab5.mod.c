@@ -26,11 +26,12 @@ static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
 	{ 0x7ba62dba, "module_layout" },
+	{ 0xcbd4898c, "fortify_panic" },
 	{ 0xdb7305a1, "__stack_chk_fail" },
 	{ 0x7aa1756e, "kvfree" },
-	{ 0xcbd4898c, "fortify_panic" },
-	{ 0x1e6d26a8, "strstr" },
 	{ 0x7c32d0f0, "printk" },
+	{ 0x85df9b6c, "strsep" },
+	{ 0x1e6d26a8, "strstr" },
 	{ 0xf9c0b663, "strlcat" },
 	{ 0x69acdf38, "memcpy" },
 	{ 0x754d539c, "strlen" },
