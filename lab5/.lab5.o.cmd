@@ -897,6 +897,193 @@ deps_/root/lab1/Operating-system-lab/lab5/lab5.o := \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
   /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/orc_types.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/syscalls.h \
+    $(wildcard include/config/arch/has/syscall/wrapper.h) \
+    $(wildcard include/config/ftrace/syscalls.h) \
+    $(wildcard include/config/odd/rt/sigaction.h) \
+    $(wildcard include/config/clone/backwards.h) \
+    $(wildcard include/config/clone/backwards3.h) \
+    $(wildcard include/config/old/sigsuspend.h) \
+    $(wildcard include/config/old/sigsuspend3.h) \
+    $(wildcard include/config/advise/syscalls.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/aio_abi.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/signal.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/key.h \
+    $(wildcard include/config/keys.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/assoc_array.h \
+    $(wildcard include/config/associative/array.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/trace/syscall.h \
+    $(wildcard include/config/have/syscall/tracepoints.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/tracepoint.h \
+    $(wildcard include/config/tracepoint.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/trace_events.h \
+    $(wildcard include/config/bpf/events.h) \
+    $(wildcard include/config/kprobe/events.h) \
+    $(wildcard include/config/uprobe/events.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/ring_buffer.h \
+    $(wildcard include/config/ring/buffer/allow/swap.h) \
+    $(wildcard include/config/ring/buffer.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/seq_file.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/cred.h \
+    $(wildcard include/config/debug/credentials.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/selinux.h \
+    $(wildcard include/config/security/selinux.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/sched/user.h \
+    $(wildcard include/config/fanotify.h) \
+    $(wildcard include/config/posix/mqueue.h) \
+    $(wildcard include/config/bpf/syscall.h) \
+    $(wildcard include/config/net.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/ratelimit.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/poll.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/poll.h \
+  arch/x86/include/generated/uapi/asm/poll.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/asm-generic/poll.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/eventpoll.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/trace_seq.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/seq_buf.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/perf_event.h \
+    $(wildcard include/config/have/hw/breakpoint.h) \
+    $(wildcard include/config/function/tracer.h) \
+    $(wildcard include/config/cgroup/perf.h) \
+    $(wildcard include/config/cpu/sup/intel.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/perf_event.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/bpf_perf_event.h \
+  arch/x86/include/generated/uapi/asm/bpf_perf_event.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/asm-generic/bpf_perf_event.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/ptrace.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/sched/signal.h \
+    $(wildcard include/config/sched/autogroup.h) \
+    $(wildcard include/config/bsd/process/acct.h) \
+    $(wildcard include/config/taskstats.h) \
+    $(wildcard include/config/audit.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/sched/jobctl.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/sched/task.h \
+    $(wildcard include/config/have/copy/thread/tls.h) \
+    $(wildcard include/config/have/exit/thread.h) \
+    $(wildcard include/config/arch/wants/dynamic/task/struct.h) \
+    $(wildcard include/config/have/arch/thread/struct/whitelist.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/pid_namespace.h \
+    $(wildcard include/config/pid/ns.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/nsproxy.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/ns_common.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/ptrace.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/perf_event.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/stacktrace.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/switch_to.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/sched/task_stack.h \
+    $(wildcard include/config/debug/stack/usage.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/magic.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/local64.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/asm-generic/local64.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/local.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/hw_breakpoint.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/uapi/asm/hw_breakpoint.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/kdebug.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/kdebug.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/ftrace.h \
+    $(wildcard include/config/dynamic/ftrace.h) \
+    $(wildcard include/config/dynamic/ftrace/with/regs.h) \
+    $(wildcard include/config/stack/tracer.h) \
+    $(wildcard include/config/function/profiler.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/trace_clock.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/trace_clock.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/kallsyms.h \
+    $(wildcard include/config/kallsyms/all.h) \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/sections.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/asm-generic/sections.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/ftrace.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/compat.h \
+    $(wildcard include/config/compat/old/sigaction.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/compat_time.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/socket.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/uapi/asm/socket.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/asm-generic/socket.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/uapi/asm/sockios.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/asm-generic/sockios.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/sockios.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/uio.h \
+    $(wildcard include/config/arch/has/uaccess/mcsafe.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/uio.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/socket.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/if.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/libc-compat.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/hdlc/ioctl.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/compat.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/user32.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/syscall_wrapper.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/cpu.h \
+    $(wildcard include/config/pm/sleep/smp.h) \
+    $(wildcard include/config/hotplug/smt.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/node.h \
+    $(wildcard include/config/memory/hotplug/sparse.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/device.h \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/generic/msi/irq/domain.h) \
+    $(wildcard include/config/pinctrl.h) \
+    $(wildcard include/config/generic/msi/irq.h) \
+    $(wildcard include/config/dma/cma.h) \
+    $(wildcard include/config/of.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/klist.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/pm.h \
+    $(wildcard include/config/vt/console/sleep.h) \
+    $(wildcard include/config/pm.h) \
+    $(wildcard include/config/pm/clk.h) \
+    $(wildcard include/config/pm/generic/domains.h) \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/device.h \
+    $(wildcard include/config/intel/iommu.h) \
+    $(wildcard include/config/amd/iommu.h) \
+    $(wildcard include/config/sta2x11.h) \
+    $(wildcard include/config/x86/dev/dma/ops.h) \
+    $(wildcard include/config/pci/domains.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/pm_wakeup.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/cpuhotplug.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/irq_work.h \
+    $(wildcard include/config/irq/work.h) \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/irq_work.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/jump_label_ratelimit.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/perf_regs.h \
+    $(wildcard include/config/have/perf/regs.h) \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/uapi/asm/perf_regs.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/cgroup.h \
+    $(wildcard include/config/cgroup/cpuacct.h) \
+    $(wildcard include/config/sock/cgroup/data.h) \
+    $(wildcard include/config/cgroup/net/prio.h) \
+    $(wildcard include/config/cgroup/net/classid.h) \
+    $(wildcard include/config/cgroup/data.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/cgroupstats.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/taskstats.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/user_namespace.h \
+    $(wildcard include/config/inotify/user.h) \
+    $(wildcard include/config/persistent/keyrings.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/kernel_stat.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/interrupt.h \
+    $(wildcard include/config/irq/forced/threading.h) \
+    $(wildcard include/config/generic/irq/probe.h) \
+    $(wildcard include/config/irq/timings.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/irqreturn.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/irqnr.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/irqnr.h \
+  /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/irq.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/cgroup-defs.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/u64_stats_sync.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/bpf-cgroup.h \
+    $(wildcard include/config/cgroup/bpf.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/bpf.h \
+    $(wildcard include/config/efficient/unaligned/access.h) \
+    $(wildcard include/config/ip/route/classid.h) \
+    $(wildcard include/config/bpf/kprobe/override.h) \
+    $(wildcard include/config/xfrm.h) \
+    $(wildcard include/config/bpf/lirc/mode2.h) \
+  /usr/src/linux-headers-4.19.0-13-common/include/uapi/linux/bpf_common.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/cgroup_subsys.h \
+    $(wildcard include/config/cgroup/device.h) \
+    $(wildcard include/config/cgroup/freezer.h) \
+    $(wildcard include/config/cgroup/hugetlb.h) \
+    $(wildcard include/config/cgroup/pids.h) \
+    $(wildcard include/config/cgroup/rdma.h) \
+    $(wildcard include/config/cgroup/debug.h) \
 
 /root/lab1/Operating-system-lab/lab5/lab5.o: $(deps_/root/lab1/Operating-system-lab/lab5/lab5.o)
 

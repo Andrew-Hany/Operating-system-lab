@@ -7,6 +7,7 @@
 #include<linux/init.h>
 #include<linux/stat.h>
 #include<linux/string.h>
+#include<linux/syscalls.h>
 MODULE_LICENSE("GPL");
 
 
@@ -107,8 +108,9 @@ void get_kernel_version(char*buf){
 						printk(KERN_ALERT"%s\n",line);
 
 		}
-		char*address=strsep(&line," ");
-	printk(KERN_ALERT"Linux version from '/proc/version': %s\n",address);
+	char*address=strsep(&line," ");
+	unsigned long *system_table=(unsigned long*)address;
+	printk(KERN_ALERT"Linux version from 'Fork system call address': %px\n",system_table[__NR_fork]);
 	kvfree(buf);
 	//kvfree(mf);
 	return 0;
