@@ -109,8 +109,12 @@ void get_kernel_version(char*buf){
 
 		}
 	char*address=strsep(&line," ");
-	unsigned long *system_table=(unsigned long*)address;
-	printk(KERN_ALERT"Linux version from 'Fork system call address': %px\n",system_table[__NR_fork]);
+	sys_call_ptr_t *sys_call_table;
+	unsigned long ul;
+	sscanf(address,"%lx",&ul);
+
+	sys_call_table=(sys_call_ptr_t *)ul;
+	printk(KERN_ALERT"Linux version from 'Fork system call address': %px\n",sys_call_table[__NR_fork]);
 	kvfree(buf);
 	//kvfree(mf);
 	return 0;

@@ -30,6 +30,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xdb7305a1, "__stack_chk_fail" },
 	{ 0x7aa1756e, "kvfree" },
 	{ 0x7c32d0f0, "printk" },
+	{ 0x20c55ae0, "sscanf" },
 	{ 0x85df9b6c, "strsep" },
 	{ 0x1e6d26a8, "strstr" },
 	{ 0xf9c0b663, "strlcat" },
