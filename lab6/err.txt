@@ -1,0 +1,52 @@
+/root/lab1/Operating-system-lab/lab6/lab6.c:19:1: error: unknown type name ‘my_fork’
+ my_fork orig_fork;
+ ^~~~~~~
+/root/lab1/Operating-system-lab/lab6/lab6.c: In function ‘open_file_for_read’:
+/root/lab1/Operating-system-lab/lab6/lab6.c:46:1: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+ int err =0;
+ ^~~
+/root/lab1/Operating-system-lab/lab6/lab6.c: In function ‘read_from_file_until’:
+/root/lab1/Operating-system-lab/lab6/lab6.c:73:1: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+ int i;
+ ^~~
+/root/lab1/Operating-system-lab/lab6/lab6.c: In function ‘get_kernel_version’:
+/root/lab1/Operating-system-lab/lab6/lab6.c:94:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  int s=0;
+  ^~~
+/root/lab1/Operating-system-lab/lab6/lab6.c:95:2: warning: statement with no effect [-Wunused-value]
+  for(s;s<3;s++){
+  ^~~
+/root/lab1/Operating-system-lab/lab6/lab6.c: In function ‘kernel_version’:
+/root/lab1/Operating-system-lab/lab6/lab6.c:106:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  char*table_name=NULL;
+  ^~~~
+/root/lab1/Operating-system-lab/lab6/lab6.c:110:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  char str[100]="/boot/System.map-";
+  ^~~~
+/root/lab1/Operating-system-lab/lab6/lab6.c:113:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  struct myfile*mf=kvmalloc(sizeof(struct myfile),GFP_KERNEL);
+  ^~~~~~
+/root/lab1/Operating-system-lab/lab6/lab6.c:120:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  int s=0;
+  ^~~
+/root/lab1/Operating-system-lab/lab6/lab6.c:130:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  char*address=strsep(&line," ");
+  ^~~~
+/root/lab1/Operating-system-lab/lab6/lab6.c:138:11: warning: assignment to ‘int’ from ‘sys_call_ptr_t’ {aka ‘long int (*)(const struct pt_regs *)’} makes integer from pointer without a cast [-Wint-conversion]
+  orig_fork=sys_call_tab[__NR_clone];
+           ^
+/root/lab1/Operating-system-lab/lab6/lab6.c:120:6: warning: unused variable ‘s’ [-Wunused-variable]
+  int s=0;
+      ^
+At top level:
+/root/lab1/Operating-system-lab/lab6/lab6.c:23:24: warning: ‘new_fork’ defined but not used [-Wunused-function]
+ static asmlinkage void new_fork(void)
+                        ^~~~~~~~
+/root/lab1/Operating-system-lab/lab6/lab6.c:17:26: warning: ‘my_fork’ defined but not used [-Wunused-variable]
+ static asmlinkage void (*my_fork) (void);
+                          ^~~~~~~
+make[4]: *** [/usr/src/linux-headers-4.19.0-13-common/scripts/Makefile.build:315: /root/lab1/Operating-system-lab/lab6/lab6.o] Error 1
+make[3]: *** [/usr/src/linux-headers-4.19.0-13-common/Makefile:1565: _module_/root/lab1/Operating-system-lab/lab6] Error 2
+make[2]: *** [Makefile:146: sub-make] Error 2
+make[1]: *** [Makefile:8: all] Error 2
+make: *** [Makefile:4: all] Error 2
