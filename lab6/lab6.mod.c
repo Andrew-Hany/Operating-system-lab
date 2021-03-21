@@ -42,6 +42,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xc5bc25de, "kvmalloc_node" },
 	{ 0x9547fcad, "current_task" },
 	{ 0x7c32d0f0, "printk" },
+	{ 0x2ea2c95c, "__x86_indirect_thunk_rax" },
 	{ 0xbdfb6dbb, "__fentry__" },
 };
 
