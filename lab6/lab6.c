@@ -14,18 +14,21 @@
 MODULE_LICENSE("GPL");
 
 //creating New fork system call
-typedef asmlinkage long (*sys_call_ptr_t)(const struct pt_regs *);
+//typedef asmlinkage long (*sys_call_ptr_t)(const struct pt_regs *);
 
-typedef asmlinkage long (*my_fork) (void);
+typedef asmlinkage long (*my_fork)(unsigned long flags, void *stack, int *parent_tid, int *child_tid,unsigned long tls);
 
 my_fork orig_fork;
 int counter=0;
 static sys_call_ptr_t *sys_call_tab;
 
-static asmlinkage long new_fork(void)
-{
-	counter=counter+10;
+static asmlinkage long new_fork(unsigned long flags, void*stack, int *parent_tid, int *child_tid,unsigned long tls)
 
+{
+
+
+	counter=counter+10;
+printk(KERN_ALERT "%d\n",counter); 
 }
 
 

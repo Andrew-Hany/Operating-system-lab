@@ -30,7 +30,6 @@ __attribute__((section("__versions"))) = {
 	{ 0xdb7305a1, "__stack_chk_fail" },
 	{ 0xd4b3235, "pv_cpu_ops" },
 	{ 0x7aa1756e, "kvfree" },
-	{ 0x7c32d0f0, "printk" },
 	{ 0x20c55ae0, "sscanf" },
 	{ 0x85df9b6c, "strsep" },
 	{ 0x1e6d26a8, "strstr" },
@@ -42,6 +41,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xd5db35e0, "filp_open" },
 	{ 0xc5bc25de, "kvmalloc_node" },
 	{ 0x9547fcad, "current_task" },
+	{ 0x7c32d0f0, "printk" },
 	{ 0xbdfb6dbb, "__fentry__" },
 };
 
