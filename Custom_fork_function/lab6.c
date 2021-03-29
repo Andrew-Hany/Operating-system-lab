@@ -26,7 +26,6 @@ static asmlinkage long new_fork(unsigned long flags, void*stack, int *parent_tid
 
 {
 
-
 	counter=counter+1;
 	if(counter%10==0)
 printk(KERN_ALERT "%d\n",counter);
