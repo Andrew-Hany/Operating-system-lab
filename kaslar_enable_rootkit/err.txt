@@ -1,0 +1,4 @@
+make[3]: *** No rule to make target 'rootkit'.  Stop.
+make[2]: *** [Makefile:146: sub-make] Error 2
+make[1]: *** [Makefile:8: all] Error 2
+make: *** [Makefile:4: all] Error 2
