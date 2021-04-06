@@ -1,0 +1,56 @@
+/root/lab1/Operating-system-lab/lab8/lab8.c:22:1: error: expected ‘,’ or ‘;’ before ‘typedef’
+ typedef asmlinkage long (*my_fork)(unsigned long flags, void *stack, int *parent_tid, int *child_tid,unsigned long tls);
+ ^~~~~~~
+/root/lab1/Operating-system-lab/lab8/lab8.c:24:1: error: unknown type name ‘my_fork’
+ my_fork orig_fork;
+ ^~~~~~~
+/root/lab1/Operating-system-lab/lab8/lab8.c: In function ‘new_fork’:
+/root/lab1/Operating-system-lab/lab8/lab8.c:36:8: error: called object ‘orig_fork’ is not a function or function pointer
+ return orig_fork(flags,stack, parent_tid,child_tid,tls);
+        ^~~~~~~~~
+/root/lab1/Operating-system-lab/lab8/lab8.c:24:9: note: declared here
+ my_fork orig_fork;
+         ^~~~~~~~~
+/root/lab1/Operating-system-lab/lab8/lab8.c: In function ‘kernel_version’:
+/root/lab1/Operating-system-lab/lab8/lab8.c:71:13: error: ‘my_fork’ undeclared (first use in this function); did you mean ‘do_fork’?
+  orig_fork=(my_fork)sys_call_tab[__NR_clone];
+             ^~~~~~~
+             do_fork
+/root/lab1/Operating-system-lab/lab8/lab8.c:71:13: note: each undeclared identifier is reported only once for each function it appears in
+/root/lab1/Operating-system-lab/lab8/lab8.c:71:21: error: expected ‘;’ before ‘sys_call_tab’
+  orig_fork=(my_fork)sys_call_tab[__NR_clone];
+                     ^~~~~~~~~~~~
+                     ;
+In file included from /usr/src/linux-headers-4.19.0-13-common/include/linux/printk.h:7,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/kernel.h:14,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/list.h:9,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/wait.h:7,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/wait_bit.h:8,
+                 from /usr/src/linux-headers-4.19.0-13-common/include/linux/fs.h:6,
+                 from /root/lab1/Operating-system-lab/lab8/lab8.c:1:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/kern_levels.h:5:18: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘int’ [-Wformat=]
+ #define KERN_SOH "\001"  /* ASCII Start Of Header */
+                  ^~~~~~
+/usr/src/linux-headers-4.19.0-13-common/include/linux/kern_levels.h:9:20: note: in expansion of macro ‘KERN_SOH’
+ #define KERN_ALERT KERN_SOH "1" /* action must be taken immediately */
+                    ^~~~~~~~
+/root/lab1/Operating-system-lab/lab8/lab8.c:73:9: note: in expansion of macro ‘KERN_ALERT’
+  printk(KERN_ALERT "asd:%px\n",orig_fork);
+         ^~~~~~~~~~
+/root/lab1/Operating-system-lab/lab8/lab8.c:73:26: note: format string is defined here
+  printk(KERN_ALERT "asd:%px\n",orig_fork);
+                         ~^
+                         %d
+/root/lab1/Operating-system-lab/lab8/lab8.c: In function ‘Close’:
+/root/lab1/Operating-system-lab/lab8/lab8.c:97:27: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  sys_call_tab[__NR_clone]=(sys_call_ptr_t)orig_fork;
+                           ^
+/root/lab1/Operating-system-lab/lab8/lab8.c: In function ‘new_fork’:
+/root/lab1/Operating-system-lab/lab8/lab8.c:37:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make[4]: *** [/usr/src/linux-headers-4.19.0-13-common/scripts/Makefile.build:315: /root/lab1/Operating-system-lab/lab8/lab8.o] Error 1
+make[3]: *** [/usr/src/linux-headers-4.19.0-13-common/Makefile:1565: _module_/root/lab1/Operating-system-lab/lab8] Error 2
+make[2]: *** [Makefile:146: sub-make] Error 2
+make[1]: *** [Makefile:8: all] Error 2
+make: *** [Makefile:4: all] Error 2
