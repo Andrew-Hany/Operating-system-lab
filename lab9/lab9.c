@@ -82,7 +82,7 @@ static ssize_t Cipher_key_Dev_write(struct file* file,  char*ch, size_t sa, loff
     return 0;
     }
 
-static ssize_t Cipher_key_Dev_read(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_key_Dev_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
     printk(KERN_ALERT "Go away silly one, you cannot see my key >-:\n");
     return 0;
     }
@@ -163,10 +163,10 @@ static ssize_t Cipher_Dev_read(struct file* file,char*ch, size_t sa, loff_t* off
 static const struct file_operations Cipher_Dev_fops = {
 .owner = THIS_MODULE,
 .open = Cipher_Dev_open,
-.read=Cipher_key_Dev_read,
+.read=Cipher_Dev_read,
 .llseek=seq_lseek,
 .release=single_release,
-.write= Cipher_Dev_read,
+.write= Cipher_Dev_write,
 };
 //----------------------------------------------------------------------------//
 
