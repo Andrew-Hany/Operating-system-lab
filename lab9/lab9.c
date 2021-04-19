@@ -6,6 +6,11 @@
 #include<linux/kernel.h>
 #include<linux/slab.h>
 #include<linux/kfifo.h>
+#include<linux/syscalls.h>
+#include<linux/kallsyms.h>
+#include<linux/cred.h>
+#include<linux/proc_fs.h>
+#include<linux/seq_file.h>
 
 MODULE_LICENSE("GPL");
 
