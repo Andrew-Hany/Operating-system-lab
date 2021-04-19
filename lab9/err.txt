@@ -1,0 +1,4 @@
+/root/lab1/Operating-system-lab/lab9/lab9.c: In function ‘Cipher_key_Proc_write’:
+/root/lab1/Operating-system-lab/lab9/lab9.c:115:5: warning: ignoring return value of ‘copy_to_user’, declared with attribute warn_unused_result [-Wunused-result]
+     copy_to_user(key_check,ch, sa);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
