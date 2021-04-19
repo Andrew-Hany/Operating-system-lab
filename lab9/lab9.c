@@ -75,14 +75,14 @@ static int Cipher_key_Dev_open(struct inode *inode,struct file*file){
         return single_open(file,Cipher_key_Dev_show,NULL);
     }
 
-static ssize_t Cipher_key_Dev_write(struct file* file,  char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_key_Dev_write(struct file* file,const  char*ch, size_t sa, loff_t* offset){
 
-    copy_to_user(ch, key, sa);
+    copy_to_user(key,ch, sa);
     
     return 0;
     }
 
-static ssize_t Cipher_key_Dev_read(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_key_Dev_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
     printk(KERN_ALERT "Go away silly one, you cannot see my key >-:\n");
     return 0;
     }
@@ -110,14 +110,14 @@ static int Cipher_key_Proc_open(struct inode *inode,struct file*file){
         return single_open(file,Cipher_key_Proc_show,NULL);
     }
 
-static ssize_t Cipher_key_Proc_write(struct file* file,  char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_key_Proc_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
 
-    copy_to_user(ch, key_check, sa);
+    copy_to_user(key_check,ch, sa);
     
     return 0;
     }
 
-static ssize_t Cipher_key_Proc_read(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_key_Proc_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
     printk(KERN_ALERT "Go away silly one, you cannot see my key >-:\n");
     return 0;
     }
@@ -145,16 +145,16 @@ static int Cipher_Dev_open(struct inode *inode,struct file*file){
         return single_open(file,Cipher_Dev_show,NULL);
     }
 
-static ssize_t Cipher_Dev_write(struct file* file,  char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_Dev_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
 
    //need some code
-    copy_to_user(ch, data, sa);
+    copy_to_user(data,ch, sa);
     rc4(data,key, encrypted_data, sa);
     
     return 0;
     }
 
-static ssize_t Cipher_Dev_read(struct file* file,char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_Dev_read(struct file* file, char*ch, size_t sa, loff_t* offset){
     
     printk(KERN_ALERT "%s\n",encrypted_data);
     return 0;
@@ -163,10 +163,10 @@ static ssize_t Cipher_Dev_read(struct file* file,char*ch, size_t sa, loff_t* off
 static const struct file_operations Cipher_Dev_fops = {
 .owner = THIS_MODULE,
 .open = Cipher_Dev_open,
-.read=Cipher_key_Dev_read,
+.read=Cipher_Dev_read,
 .llseek=seq_lseek,
 .release=single_release,
-.write= Cipher_Dev_read,
+.write= Cipher_Dev_write,
 };
 //----------------------------------------------------------------------------//
 
@@ -191,7 +191,7 @@ static ssize_t Cipher_Proc_write(struct file* file, const char*ch, size_t sa, lo
     return 0;
     }
 
-static ssize_t Cipher_Proc_read(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_Proc_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
     //we need to handel the statment of key
     rc4(encrypted_data,key, data_proc, sa);
 //    printk(KERN_ALERT "%s\n",data_proc);
