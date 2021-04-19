@@ -15,7 +15,7 @@
 MODULE_LICENSE("GPL");
 
 char key[128] = {0};
-char key_check[128]={0}
+char key_check[128]={0};
 char data[256];
 char encrypted_data[256];
 char data_proc[256];
@@ -71,7 +71,7 @@ static int Cipher_key_Dev_open(struct inode *inode,struct file*file){
         return single_open(file,Cipher_key_Dev_show,NULL);
     }
 
-static ssize_t Cipher_key_Dev_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_key_Dev_write(struct file* file,  char*ch, size_t sa, loff_t* offset){
 
     copy_to_user(ch, key, sa);
     
@@ -106,7 +106,7 @@ static int Cipher_key_Proc_open(struct inode *inode,struct file*file){
         return single_open(file,Cipher_key_Proc_show,NULL);
     }
 
-static ssize_t Cipher_key_Proc_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_key_Proc_write(struct file* file,  char*ch, size_t sa, loff_t* offset){
 
     copy_to_user(ch, key_check, sa);
     
@@ -150,7 +150,7 @@ static ssize_t Cipher_Dev_write(struct file* file, const char*ch, size_t sa, lof
     return 0;
     }
 
-static ssize_t Cipher_Dev_read(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_Dev_read(struct file* file,char*ch, size_t sa, loff_t* offset){
     
     printk(KERN_ALERT "%s\n",encrypted_data);
     return 0;
