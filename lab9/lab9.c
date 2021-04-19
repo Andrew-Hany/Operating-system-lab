@@ -11,6 +11,10 @@
 #include<linux/cred.h>
 #include<linux/proc_fs.h>
 #include<linux/seq_file.h>
+#include<asm/segment.h>
+#include<asm/uaccess.h>
+#include<linux/buffer_head.h>
+#include<linux/stat.h>
 
 MODULE_LICENSE("GPL");
 
@@ -141,7 +145,7 @@ static int Cipher_Dev_open(struct inode *inode,struct file*file){
         return single_open(file,Cipher_Dev_show,NULL);
     }
 
-static ssize_t Cipher_Dev_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
+static ssize_t Cipher_Dev_write(struct file* file,  char*ch, size_t sa, loff_t* offset){
 
    //need some code
     copy_to_user(ch, data, sa);
