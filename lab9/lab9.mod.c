@@ -29,13 +29,15 @@ __attribute__((section("__versions"))) = {
 	{ 0x7a00b645, "single_release" },
 	{ 0x6a85a51d, "seq_lseek" },
 	{ 0xc909f65e, "remove_proc_entry" },
+	{ 0x3fd78f3b, "register_chrdev_region" },
 	{ 0x613f21f5, "proc_create" },
 	{ 0xdb7305a1, "__stack_chk_fail" },
-	{ 0x7c32d0f0, "printk" },
-	{ 0xb44ad4b3, "_copy_to_user" },
+	{ 0xad27f361, "__warn_printk" },
+	{ 0x362ef408, "_copy_from_user" },
 	{ 0x88db9f48, "__check_object_size" },
 	{ 0xad4c6a80, "seq_printf" },
 	{ 0x4811682b, "single_open" },
+	{ 0x7c32d0f0, "printk" },
 	{ 0xbdfb6dbb, "__fentry__" },
 };
 

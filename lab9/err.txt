@@ -1,4 +1,68 @@
+/root/lab1/Operating-system-lab/lab9/lab9.c: In function ‘device_init’:
+/root/lab1/Operating-system-lab/lab9/lab9.c:226:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+     int major = register_chrdev_region(MKDEV(1,0),2,"cipher");
+     ^~~
+/root/lab1/Operating-system-lab/lab9/lab9.c:228:15: error: passing argument 1 of ‘cdev_init’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+     cdev_init(&dev[0],&Cipher_key_Dev_fops);
+               ^~~~~~~
+In file included from /root/lab1/Operating-system-lab/lab9/lab9.c:18:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/cdev.h:23:16: note: expected ‘struct cdev *’ but argument is of type ‘struct cdev **’
+ void cdev_init(struct cdev *, const struct file_operations *);
+                ^~~~~~~~~~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c:229:14: error: passing argument 1 of ‘cdev_add’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+     cdev_add(&dev[0],MKDEV(1,0),1);
+              ^~~~~~~
+In file included from /root/lab1/Operating-system-lab/lab9/lab9.c:18:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/cdev.h:29:14: note: expected ‘struct cdev *’ but argument is of type ‘struct cdev **’
+ int cdev_add(struct cdev *, dev_t, unsigned);
+              ^~~~~~~~~~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c:232:15: error: passing argument 1 of ‘cdev_init’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+     cdev_init(&dev[1],&Cipher_Dev_fops);
+               ^~~~~~~
+In file included from /root/lab1/Operating-system-lab/lab9/lab9.c:18:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/cdev.h:23:16: note: expected ‘struct cdev *’ but argument is of type ‘struct cdev **’
+ void cdev_init(struct cdev *, const struct file_operations *);
+                ^~~~~~~~~~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c:233:14: error: passing argument 1 of ‘cdev_add’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+     cdev_add(&dev[1],MKDEV(1,1),1);
+              ^~~~~~~
+In file included from /root/lab1/Operating-system-lab/lab9/lab9.c:18:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/cdev.h:29:14: note: expected ‘struct cdev *’ but argument is of type ‘struct cdev **’
+ int cdev_add(struct cdev *, dev_t, unsigned);
+              ^~~~~~~~~~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c:226:9: warning: unused variable ‘major’ [-Wunused-variable]
+     int major = register_chrdev_region(MKDEV(1,0),2,"cipher");
+         ^~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c: In function ‘device_exit’:
+/root/lab1/Operating-system-lab/lab9/lab9.c:246:14: error: passing argument 1 of ‘cdev_del’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+     cdev_del(&dev[0]);
+              ^~~~~~~
+In file included from /root/lab1/Operating-system-lab/lab9/lab9.c:18:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/cdev.h:35:15: note: expected ‘struct cdev *’ but argument is of type ‘struct cdev **’
+ void cdev_del(struct cdev *);
+               ^~~~~~~~~~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c:247:14: error: passing argument 1 of ‘cdev_del’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+     cdev_del(&dev[1]);
+              ^~~~~~~
+In file included from /root/lab1/Operating-system-lab/lab9/lab9.c:18:
+/usr/src/linux-headers-4.19.0-13-common/include/linux/cdev.h:35:15: note: expected ‘struct cdev *’ but argument is of type ‘struct cdev **’
+ void cdev_del(struct cdev *);
+               ^~~~~~~~~~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c: In function ‘Cipher_Dev_write’:
+/root/lab1/Operating-system-lab/lab9/lab9.c:153:5: warning: ignoring return value of ‘copy_to_user’, declared with attribute warn_unused_result [-Wunused-result]
+     copy_to_user(data,ch, sa);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~
+/root/lab1/Operating-system-lab/lab9/lab9.c: In function ‘Cipher_key_Dev_write’:
+/root/lab1/Operating-system-lab/lab9/lab9.c:82:5: warning: ignoring return value of ‘copy_to_user’, declared with attribute warn_unused_result [-Wunused-result]
+     copy_to_user(key,ch, sa);
+     ^~~~~~~~~~~~~~~~~~~~~~~~
 /root/lab1/Operating-system-lab/lab9/lab9.c: In function ‘Cipher_key_Proc_write’:
-/root/lab1/Operating-system-lab/lab9/lab9.c:115:5: warning: ignoring return value of ‘copy_to_user’, declared with attribute warn_unused_result [-Wunused-result]
+/root/lab1/Operating-system-lab/lab9/lab9.c:117:5: warning: ignoring return value of ‘copy_to_user’, declared with attribute warn_unused_result [-Wunused-result]
      copy_to_user(key_check,ch, sa);
      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+make[4]: *** [/usr/src/linux-headers-4.19.0-13-common/scripts/Makefile.build:315: /root/lab1/Operating-system-lab/lab9/lab9.o] Error 1
+make[3]: *** [/usr/src/linux-headers-4.19.0-13-common/Makefile:1565: _module_/root/lab1/Operating-system-lab/lab9] Error 2
+make[2]: *** [Makefile:146: sub-make] Error 2
+make[1]: *** [Makefile:8: all] Error 2
+make: *** [Makefile:4: all] Error 2

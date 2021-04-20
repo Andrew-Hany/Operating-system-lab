@@ -1100,6 +1100,7 @@ deps_/root/lab1/Operating-system-lab/lab9/lab9.o := \
   /usr/src/linux-headers-4.19.0-13-common/arch/x86/include/asm/cacheflush.h \
   /usr/src/linux-headers-4.19.0-13-common/include/asm-generic/cacheflush.h \
   /usr/src/linux-headers-4.19.0-13-common/include/linux/hugetlb_inline.h \
+  /usr/src/linux-headers-4.19.0-13-common/include/linux/cdev.h \
 
 /root/lab1/Operating-system-lab/lab9/lab9.o: $(deps_/root/lab1/Operating-system-lab/lab9/lab9.o)
 

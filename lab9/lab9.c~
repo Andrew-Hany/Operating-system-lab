@@ -24,7 +24,7 @@ char key_check[128];
 char data[256];
 char encrypted_data[256];
 char data_proc[256];
-struct cdev dev[2];
+struct cdev *dev;
 
 //rc4
 //----------------------------------------------------------------------------//
@@ -79,7 +79,7 @@ static int Cipher_key_Dev_open(struct inode *inode,struct file*file){
 
 static ssize_t Cipher_key_Dev_write(struct file* file,const  char*ch, size_t sa, loff_t* offset){
 
-    copy_from_user(key,ch, sa);
+    copy_to_user(key,ch, sa);
     
     return 0;
     }
@@ -114,7 +114,7 @@ static int Cipher_key_Proc_open(struct inode *inode,struct file*file){
 
 static ssize_t Cipher_key_Proc_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
 
-    copy_from_user(key_check,ch, sa);
+    copy_to_user(key_check,ch, sa);
     
     return 0;
     }
@@ -150,7 +150,7 @@ static int Cipher_Dev_open(struct inode *inode,struct file*file){
 static ssize_t Cipher_Dev_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
 
    //need some code
-    copy_from_user(data,ch, sa);
+    copy_to_user(data,ch, sa);
     rc4(data,key, encrypted_data, sa);
     
     return 0;
@@ -195,8 +195,8 @@ static ssize_t Cipher_Proc_write(struct file* file, const char*ch, size_t sa, lo
 
 static ssize_t Cipher_Proc_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
     //we need to handel the statment of key
-   rc4(encrypted_data,key_check, data_proc, sa);
-    printk(KERN_ALERT "sassa%s\n",data_proc);
+    rc4(encrypted_data,key, data_proc, sa);
+//    printk(KERN_ALERT "%s\n",data_proc);
     return 0;
     }
 
@@ -223,21 +223,14 @@ int device_init(void){
     
     //creating the
     
-    int major = register_chrdev_region(MKDEV(1,0),2,"cipher");
+   // int major = register_chrdev_region(MKDEV(1,0),2,"cipher");
     
-if(major!=0)
-{
-	printk(KERN_ALERT "asad:%d\n",major);
-	return -1;
-
-}
-printk(KERN_ALERT "as:%d\n",major);
-  //  cdev_init(&dev[0],&Cipher_key_Dev_fops);
+   // cdev_init(&dev[0],&Cipher_key_Dev_fops);
    // cdev_add(&dev[0],MKDEV(1,0),1);
  
     
-   // cdev_init(&dev[1],&Cipher_Dev_fops);
-    //cdev_add(&dev[1],MKDEV(1,1),1);
+  //  cdev_init(&dev[1],&Cipher_Dev_fops);
+//    cdev_add(&dev[1],MKDEV(1,1),1);
     
     
     
@@ -250,8 +243,7 @@ void  device_exit(void){
     //remove the proc entry
     remove_proc_entry("cipher",NULL);
     remove_proc_entry("cipher_key",NULL);
-//    cdev_del(&dev[0]);
-  //  cdev_del(&dev[1]);    
+    
  
 printk(KERN_ALERT "Kernel removed \n");
 }
