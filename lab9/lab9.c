@@ -19,11 +19,11 @@
 #include <linux/device.h>
 MODULE_LICENSE("GPL");
 
-char key[128] = {0};
-char key_check[128];
-char data[256];
-char encrypted_data[256];
-char data_proc[256];
+char key[128]={0};
+char key_check[128]={0};
+char data[4096]={0};
+char encrypted_data[4096]={0};
+char data_proc[4096]={0};
 struct cdev dev[2];
 
 //rc4
@@ -81,7 +81,7 @@ static ssize_t Cipher_key_Dev_write(struct file* file,const  char*ch, size_t sa,
 
     copy_from_user(key,ch, sa);
     
-    return 0;
+    return sa;
     }
 
 static ssize_t Cipher_key_Dev_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
@@ -103,7 +103,7 @@ static const struct file_operations Cipher_key_Dev_fops = {
 //----------------------------------------------------------------------------//
 static int Cipher_key_Proc_show(struct seq_file *m, void *v)
     {
-        seq_printf(m,"%s\n",key);
+        seq_printf(m,"%s\n",key_check);
            return 0;
         
     }
@@ -116,7 +116,7 @@ static ssize_t Cipher_key_Proc_write(struct file* file, const char*ch, size_t sa
 
     copy_from_user(key_check,ch, sa);
     
-    return 0;
+    return sa;
     }
 
 static ssize_t Cipher_key_Proc_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
@@ -150,10 +150,13 @@ static int Cipher_Dev_open(struct inode *inode,struct file*file){
 static ssize_t Cipher_Dev_write(struct file* file, const char*ch, size_t sa, loff_t* offset){
 
    //need some code
-    copy_from_user(data,ch, sa);
+   memset(data,0,4096*sizeof(char));
+   memset(data_proc,0,4096*sizeof(char));
+   memset(encrypted_data,0,4096*sizeof(char)); 
+   copy_from_user(data,ch, sa);
     rc4(data,key, encrypted_data, sa);
     
-    return 0;
+    return sa;
     }
 
 static ssize_t Cipher_Dev_read(struct file* file, char*ch, size_t sa, loff_t* offset){
@@ -176,6 +179,7 @@ static const struct file_operations Cipher_Dev_fops = {
 //----------------------------------------------------------------------------//
 static int Cipher_Proc_show(struct seq_file *m, void *v)
     {
+	    rc4(encrypted_data, key_check,data_proc,strlen(data));
         seq_printf(m,"%s\n",data_proc);
            return 0;
         
@@ -190,20 +194,15 @@ static ssize_t Cipher_Proc_write(struct file* file, const char*ch, size_t sa, lo
    //need some code
     printk(KERN_ALERT "you can't write here\n");
     
-    return 0;
+    return sa;
     }
 
-static ssize_t Cipher_Proc_read(struct file* file,  char*ch, size_t sa, loff_t* offset){
-    //we need to handel the statment of key
-   rc4(encrypted_data,key_check, data_proc, sa);
-    printk(KERN_ALERT "sassa%s\n",data_proc);
-    return 0;
-    }
+
 
 static const struct file_operations Cipher_Proc_fops = {
 .owner = THIS_MODULE,
 .open = Cipher_Proc_open,
-.read=Cipher_Proc_read,
+.read=seq_read,
 .llseek=seq_lseek,
 .release=single_release,
 .write= Cipher_Proc_write,
@@ -223,7 +222,7 @@ int device_init(void){
     
     //creating the
     
-    int major = register_chrdev_region(MKDEV(1,0),2,"cipher");
+    int major = register_chrdev_region(MKDEV(300,0),2,"cipher");
     
 if(major!=0)
 {
@@ -232,12 +231,12 @@ if(major!=0)
 
 }
 printk(KERN_ALERT "as:%d\n",major);
-  //  cdev_init(&dev[0],&Cipher_key_Dev_fops);
-   // cdev_add(&dev[0],MKDEV(1,0),1);
+   cdev_init(&dev[0],&Cipher_Dev_fops);
+    cdev_add(&dev[0],MKDEV(300,0),1);
  
     
-   // cdev_init(&dev[1],&Cipher_Dev_fops);
-    //cdev_add(&dev[1],MKDEV(1,1),1);
+    cdev_init(&dev[1],&Cipher_key_Dev_fops);
+    cdev_add(&dev[1],MKDEV(300,1),1);
     
     
     
@@ -250,9 +249,10 @@ void  device_exit(void){
     //remove the proc entry
     remove_proc_entry("cipher",NULL);
     remove_proc_entry("cipher_key",NULL);
-//    cdev_del(&dev[0]);
-  //  cdev_del(&dev[1]);    
- 
+ cdev_del(&dev[0]);
+    cdev_del(&dev[1]);    
+
+unregister_chrdev_region(MKDEV(300,0),2);
 printk(KERN_ALERT "Kernel removed \n");
 }
 
