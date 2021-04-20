@@ -15,7 +15,8 @@
 #include<asm/uaccess.h>
 #include<linux/buffer_head.h>
 #include<linux/stat.h>
-
+#include <linux/cdev.h>
+#include <linux/device.h>
 MODULE_LICENSE("GPL");
 
 char key[128] = {0};
@@ -23,6 +24,7 @@ char key_check[128]={0};
 char data[256];
 char encrypted_data[256];
 char data_proc[256];
+struct cdev *dev;
 
 //rc4
 //----------------------------------------------------------------------------//
@@ -220,7 +222,19 @@ int device_init(void){
    proc_create("cipher_key",0,NULL,&Cipher_key_Proc_fops);
     
     //creating the
-   return 0;
+    
+    int major = register_chrdev_region(MKDEV(1,0),2,"cipher");
+    
+    cdev_init(&dev[0],&Cipher_key_Dev_fops)
+    cdev_dev(&dev[0],MKDEV(1,0),1);
+ 
+    
+    cdev_init(&dev[1],&Cipher_Dev_fops)
+    cdev_dev(&dev[1],MKDEV(1,1),1);
+    
+    
+    
+    return 0;
    
 
 
@@ -229,6 +243,7 @@ void  device_exit(void){
     //remove the proc entry
     remove_proc_entry("cipher",NULL);
     remove_proc_entry("cipher_key",NULL);
+    
  
 printk(KERN_ALERT "Kernel removed \n");
 }
