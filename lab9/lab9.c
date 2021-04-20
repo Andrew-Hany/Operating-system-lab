@@ -229,7 +229,7 @@ int device_init(void){
     cdev_dev(&dev[0],MKDEV(1,0),1);
  
     
-    cdev_init(&dev[1],&Cipher_Dev_fops)
+    cdev_init(&dev[1],&Cipher_Dev_fops);
     cdev_dev(&dev[1],MKDEV(1,1),1);
     
     
