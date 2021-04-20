@@ -226,11 +226,11 @@ int device_init(void){
     int major = register_chrdev_region(MKDEV(1,0),2,"cipher");
     
     cdev_init(&dev[0],&Cipher_key_Dev_fops)
-    cdev_dev(&dev[0],MKDEV(1,0),1);
+    cdev_add(&dev[0],MKDEV(1,0),1);
  
     
     cdev_init(&dev[1],&Cipher_Dev_fops);
-    cdev_dev(&dev[1],MKDEV(1,1),1);
+    cdev_add(&dev[1],MKDEV(1,1),1);
     
     
     
