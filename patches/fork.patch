@@ -1,5 +1,5 @@
 --- fork.c	2020-10-07 01:04:13.000000000 +0200
-+++ /root/linux/kernel/fork.c	2021-05-18 08:15:33.008729309 +0200
++++ /root/linux/kernel/fork.c	2021-05-18 20:31:42.184245020 +0200
 @@ -2385,6 +2385,7 @@
   *
   * args->exit_signal is expected to be checked for sanity by the caller.
@@ -122,7 +122,7 @@
  #endif
  
 +//pfork
-+#ifdef __ARCH_WANT_SYS_PFORK
++
 +SYSCALL_DEFINE0(pfork)
 +{
 +#ifdef CONFIG_MMU
@@ -136,33 +136,33 @@
 +	return -EINVAL;
 +#endif
 +}
-+#endif
++
 +///////////////////
 +
 +//set_pfork_status
 +
-+#ifdef __ARCH_WANT_SYS_SET_PFORK_STATUS
-+int i;
-+SYSCALL_DEFINE1(set_pfork_status,i)
++
++SYSCALL_DEFINE1(set_pfork_status,int,i)
 +{
-+current->pfork_status=i;
++
++	current->pfork_status=i;
 +}
-+#endif
++
 +
 +/////////
 +
 +//Get_pfork_status
 +
-+#ifdef __ARCH_WANT_SYS_GET_PFORK_STATUS
++
 +SYSCALL_DEFINE0(get_pfork_status)
 +{
 +return current->pfork_status;
 +}
-+#endif
++
 +//
 +
 +//get_pfork-sibling_pid
-+#ifdef __ARCH_WANT_SYS_GET_PFORK_SIBLING_PID
++
 +SYSCALL_DEFINE0(get_pfork_sibling_pid)
 +{
 +if(current->pfork_active_pid==0)
@@ -170,11 +170,11 @@
 +else if(current->pfork_standby_pid==0)
 +	return current->pfork_active_pid;
 +}
-+#endif
++
 +//
 +
 +//pfork_who
-+#ifdef __ARCH_WANT_SYS_PFORK_WHO
++
 +SYSCALL_DEFINE0(pfork_who)
 +{
 +if(current->pfork_active_pid==0)
@@ -184,7 +184,7 @@
 +else
 +	return 0;
 +}
-+#endif
++
 +//
 +
 +
