@@ -1,0 +1,20 @@
+--- sched.h	2020-10-07 01:04:13.000000000 +0200
++++ /root/linux/include/linux/sched.h	2021-05-18 07:27:09.148606055 +0200
+@@ -629,12 +629,17 @@
+ };
+ 
+ struct task_struct {
++
+ #ifdef CONFIG_THREAD_INFO_IN_TASK
+ 	/*
+ 	 * For reasons of header soup (see current_thread_info()), this
+ 	 * must be the first element of task_struct.
+ 	 */
+ 	struct thread_info		thread_info;
++	pid_t pfork_standby_pid;
++	pid_t pfork_active_pid;
++
++	int pfork_status;
+ #endif
+ 	/* -1 unrunnable, 0 runnable, >0 stopped: */
+ 	volatile long			state;

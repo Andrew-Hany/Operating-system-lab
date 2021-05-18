@@ -1,0 +1,18 @@
+--- exit.c	2020-10-07 01:04:13.000000000 +0200
++++ /root/linux/kernel/exit.c	2021-05-18 07:31:31.876617207 +0200
+@@ -900,6 +900,15 @@
+ 		spin_unlock_irq(&sighand->siglock);
+ 	}
+ 
++//continue
++if(current->pfork_active_pid==0){
++struct pid *pp=find_vpid(current->pfork_standby_pid);
++kill_pid(pp, SIGCONT,1);
++
++}
++
++
++
+ 	do_exit(exit_code);
+ 	/* NOTREACHED */
+ }
