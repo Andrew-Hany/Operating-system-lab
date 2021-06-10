@@ -1,0 +1,30 @@
+--- syscalls.h	2020-10-07 01:04:13.000000000 +0200
++++ /root/linux/include/linux/syscalls.h	2021-05-18 19:56:53.924156384 +0200
+@@ -576,6 +576,12 @@
+ asmlinkage long sys_set_tid_address(int __user *tidptr);
+ asmlinkage long sys_unshare(unsigned long unshare_flags);
+ 
++//pfork
++asmlinkage long sys_pfork(void);
++asmlinkage void sys_set_pfork_status(volatile long status);
++asmlinkage long sys_get_pfork_status();
++asmlinkage long sys_get_pfork_sibling_pid();
++asmlinkage long sys_pfork_who();
+ /* kernel/futex.c */
+ asmlinkage long sys_futex(u32 __user *uaddr, int op, u32 val,
+ 			struct __kernel_timespec __user *utime, u32 __user *uaddr2,
+@@ -1226,7 +1232,6 @@
+  * not implemented -- see kernel/sys_ni.c
+  */
+ asmlinkage long sys_ni_syscall(void);
+-
+ #endif /* CONFIG_ARCH_HAS_SYSCALL_WRAPPER */
+ 
+ 
+@@ -1345,4 +1350,6 @@
+ 		int __user *optlen);
+ int __sys_setsockopt(int fd, int level, int optname, char __user *optval,
+ 		int optlen);
++
++
+ #endif

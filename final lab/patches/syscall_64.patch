@@ -1,0 +1,15 @@
+--- syscall_64.tbl	2020-10-07 01:04:03.000000000 +0200
++++ /root/linux/arch/x86/entry/syscalls/syscall_64.tbl	2021-05-18 20:33:02.488248429 +0200
+@@ -361,7 +361,11 @@
+ 437	common	openat2			sys_openat2
+ 438	common	pidfd_getfd		sys_pidfd_getfd
+ 439	common	faccessat2		sys_faccessat2
+-
++440	common	pfork			sys_pfork
++441	common	set_pfork_status	sys_set_pfork_status
++442	common	get_pfork_status	sys_get_pfork_status
++443	common	get_pfork_sibling_pid	sys_get_pfork_sibling_pid
++445	common	pfork_who		sys_pfork_who
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact
+ # for native 64-bit operation. The __x32_compat_sys stubs are created
